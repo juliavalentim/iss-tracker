@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler"
+import React from 'react';
+import Home from './screen/home';
+import IssLocation from './screen/issLocation';
+import Meteoros from './screen/meteoros';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator()
+ export default class App extends React.Component{ 
+  render(){
+    return(
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+          <Stack.Screen name=  "Home" component = {Home}/>
+          <Stack.Screen name = "IssLocation" component = {IssLocation}/>
+          <Stack.Screen name = "Meteoros" component = {Meteoros}/> 
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
+ }
